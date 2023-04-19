@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+    Signin
+{% endblock title %}
+
+
+
+{% block courousal %}
+{% endblock courousal %}
+
+{% block fristSection %}
+
+{% load socialaccount %}
+<br>
+<br>
+<br>
+
+<div class="row b-2 ">
+
+<div class="col-md-4"></div>
+<div class="col-md-4 br-2">
+    <div class="card p-3 bg-light">
+
+        {% include 'messages.html' %}
+        
+    <div class="card-title text-center" ><h3>Signin</h3></div>
+              <div class="card p-0 bg-info">
+            <div class="card-body">
+           <div> 
+            <a href="{% provider_login_url 'google' %}" class="alert-link">Clike Here</a>Login with Google Accounts.
+    
+           </div> 
+           </div>
+           </div>
+       
+
+        <div class="card-body">
+        <form action="/signin" method="post">{% csrf_token %}  
+
+
+          <label for="name">Name</label>
+          <div class="form-group"> <input type="name" class="form-control p-2 mb-3" id="name" name="name" placeholder='Enter name ' required></div>
+         
+          <label for="email">Email</label>
+          <div class="form-group"><input type="email" class="form-control p-2 mb-3" id="email" name="email"  placeholder='Enter email ' required></div>
+          
+          <!--Password fields  -->
+          <label for="pass1">Password</label>
+          <div class="form-group"><input type="Password" class="form-control p-2 " id="pass1" name="pass1" placeholder='Enter password it must be >=8 characters ' required></div>
+          <!-- An element toggale between Password Visibility -->
+          <input type="checkbox" onclick="showPassword()"><span id="invisible">Show Password</span>
+          <br>
+          <small class="mb-3">password must be include from[0-9][a-z][A-Z][_@$]</small>
+          <br>
+          <br>
+          <label for="pass2">Confirm Password</label>
+          <div class="form-group"><input type="Password" class="form-control p-2 mb-3" id="pass2" name="pass2" placeholder='Confirm password'  required></div>
+          
+
+        <br>
+
+        <div class="d-grid gap-2"><button type="submit" class="btn btn-dark get-started-btn ">Signin</button></div>
+        
+        <br>
+
+        Aleready User? <a href="/login">Login</a>
+
+        </form>
+
+        </div>
+
+    </div>
+</div>
+
+</div>
+<div class="col-md-4"></div>
+
+
+</div>
+{% endblock fristSection %}
+
+
+
+{% block body %}
+{% endblock body %}
+
+
+{% block script %}
+
+<!-- show and hide password script -->
+<script>
+function showPassword() {
+    var data1=document.getElementById("pass1");
+    let data2=document.getElementById('invisible');
+    var data3=document.getElementById("pass2");
+    if (data1.type === "password" && data3.type ==='password'){
+        data1.type = 'text'
+        data2.innerText='Hide Password'
+        data3.type = 'text'
+        
+    }else{
+        data1.type = 'password'
+        data2.innerText='Show Password'
+        data3.type = 'password'
+    }
+    
+}
+</script>
+
+
+{% endblock script %}

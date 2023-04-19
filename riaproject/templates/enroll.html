@@ -1,0 +1,708 @@
+form riaapp.models import Cources
+
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+    Signin
+{% endblock title %}
+
+
+{% block cdnlinks %}
+
+<link href="https//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+ 
+{% endblock cdnlinks %}
+
+
+{% block courousal %}
+{% endblock courousal %}
+
+{% block fristSection %}
+
+<br>
+<br>
+<br>
+<div class="row">
+
+<div class="col-md-2"></div>
+<div class="col-md-8">
+    <div class="card p-3 bg-light">
+
+        {% include 'messages.html' %}
+
+    <div class="card-title text-center" ><h3>Ria Form</h3></div>
+        <div class="card-body">
+        <form action="/enroll" method="post">{% csrf_token %}  
+               
+               
+                <div class="form-group">
+                <label for="fname"><b>Frist Name</b></label>
+                <input type="text" class="form-control" name="fname" id="fname"  required>
+                </div> 
+
+                <div class="form-group">
+                    <label for="lname"><b>Last Name</b></label>
+                    <input type="text" class="form-control" name="lname" id="lname"  required>
+                </div> 
+
+                <div class="form-group">
+                <label for="fathername"><b>Father Name </b></label>
+                <input class="form-control" type="text" name="fathername" id="fathername" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone"><b>mobile Number </b></label>
+                    <input class="form-control" type="number" name="phone" id="phone" required>
+                </div> 
+
+                <div class="form-group">
+                <label for="aphone"><b>Alternate Number</b></label>
+                <input class="form-control" type="number" name="aphone" id="aphone" required>
+               </div> 
+
+                
+
+                <div class="form-group">
+                
+                <input class="form-control" type="email" value="{{request.user.email}}" name="email" id="email"  hidden>
+               </div> 
+                
+                <div class="form-group">
+                <label for="college"><b>College </b></label>
+                <input class="form-control" type="text" name="college" id="college" placeholder="Enter College Name"  required>
+               </div>
+
+               <br>
+                        
+                <div class="d-grid gap-2">
+                    <label class="form-label text-center bg-dark text-white pt-2 " for=""><h6><b>ADDRESS</b></h6></label>   
+                </div>
+                
+                
+                <div class="form-group">
+                <label for="doorno"> <b>DOOR NO</b></label>     
+                <input class="form-control" type="number" name="doorno" id="Dooorno" required>
+               </div> 
+                
+                <div class="form-group">
+                <label for="street"> <b>STREET</b></label> 
+                <input class="form-control" type="text" name="street" id="street" required>
+               </div> 
+               <div class="form-group">
+                <label for="pincode"> <b>PINCODE</b></label> 
+                <input class="form-control" type="text" name="pincode" id="pincode" required>
+               </div> 
+                
+                <div class="form-group">
+                <label for="landmark"> <b>LANDMARK</b></label> 
+                <input class="form-control" type="text" name="landmark" id="landmark" required>
+               </div> 
+                 
+                <div class="form-group">
+                <label for="city"> <b>CITY</b></label> 
+                <input class="form-control" type="text" name="city" id="city" required>
+               </div> 
+        
+            
+                <div class="form-group">
+                <label for="companyname"> <b>COMPANY NAME</b></label> 
+                <input class="form-control" type="text" name="companyname" id="companyname">
+               </div>
+
+                <div class="form-group">
+                <label for="designation"> <b>DESIGNATION</b></label> 
+                <input class="form-control" type="text" name="designation" id="designation">
+                </div>
+
+                <div class="form-group">
+                <label for="qualification"> <b>QUALIFICATION</b></label> 
+                <input class="form-control" type="text" name="qualification" id="qualification">
+                </div>
+            
+               
+                <br>  
+                <div class="d-grid gap-2">
+                    <label class="form-label text-center bg-dark text-white pt-2 " for="level" ><h6><b>COMPUTER KNOWLEDGE</b></h6></label>   
+                    </div>
+                
+              
+                <div class="form-check form-check-inline">
+                <label class="form-check-label" for="basic">BASIC</label> 
+                <input class="form-check-input" type="radio" id="basic" name="level" value="basic" required>
+                </div>
+    
+                <div class="form-check form-check-inline">
+                <label class="form-check-label" for="intermediate">INTERMEDIATE</label>
+                <input class="form-check-input" type="radio" id="intermediate" name="level" value="intermediate" required>
+               </div>
+
+               <div class="form-check form-check-inline">
+                <label class="form-check-label" for="advance">ADVANCE</label>
+                <input class="form-check-input" type="radio" id="advance" name="level" value="advance" required>
+               </div>
+
+               <br>
+            
+               <div class="form-group">
+                <label for="scourse"><b>Select Course</b></label>
+                <select class="form-control" id="scourse" name="scourse" required>
+               {% for c in cources %}
+               
+               <option value="{{c.courseName}}" >{{c.courseName}}</option>
+              
+
+               {% endfor %}
+               
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="ccourse"><b>Conform Course</b></label>
+                <select class="form-control" id="ccourse" name="ccourse" required>
+
+              <option value="Select">Select </option>
+               {% for c in cources %}
+               
+               <option value="{{c.courseName}}" >{{c.courseName}}</option>
+              
+
+               {% endfor %}
+               
+                </select>
+              </div>
+
+               
+         
+<!--             
+        
+                <div class="d-grid gap-2">
+                    <label class="form-label text-center bg-dark text-white pt-2 " for="DEGREE"><h6><b>QUALIFICATION</b></h6></label>   
+                    </div>
+                
+
+                <div class="form-check form-check-inline">
+                <label  class="form-check-label" for="10TH">10TH</label>
+                <input class="form-check-input" type="checkbox" id="10TH" name="DEGREE" value="10TH">
+                </div>
+
+                <div class="form-check form-check-inline">
+                <label  class="form-check-label" for="12TH">12TH</label>
+                <input class="form-check-input" type="checkbox" id="12TH" name="DEGREE" value="12TH">
+                </div>
+
+                <div class="form-check form-check-inline">
+                <label  class="form-check-label" for="DIPLOMA">DIPLOMA</label> 
+                <input class="form-check-input" type="checkbox" id="DIPLOMA" name="DEGREE" value="DIPLOMA">
+                </div>
+
+                <div class="form-check form-check-inline">
+                <label  class="form-check-label" for="BE/BTECH">BE/BTECH</label>
+                <input class="form-check-input" type="checkbox" id="BE/BTECH" name="DEGREE" value="BE/BTECH">
+                 </div>
+
+                <div class="form-check form-check-inline">
+                <label  class="form-check-label" for="ME\MTECH">ME\MTECH</label> 
+                <input class="form-check-input" type="checkbox" id="ME\MTECH" name="DEGREE" value="ME\MTECH">
+                </div>
+
+                <div class="form-check form-check-inline">
+                <label  class="form-check-label" for="DEGREE">DEGREE</label>
+                <input class="form-check-input" type="checkbox" id="DEGREE" name="DEGREE" value="DEGREE">
+                </div>
+
+                <div class="form-check form-check-inline">
+                <label  class="form-check-label" for="MCA">MCA</label>
+                <input class="form-check-input" type="checkbox" id="MCA" name="DEGREE" value="MCA">
+                </div>
+
+                <div class="form-check form-check-inline">
+                <label  class="form-check-label" for="MBA">MBA</label>  
+                <input class="form-check-input" type="checkbox" id="MBA" name="DEGREE" value="MBA">
+                </div>
+ 
+               
+            
+                        
+       <div class="d-grid gap-2">
+        <label class="form-label text-center bg-dark text-white pt-2 " for="HR NW"><h5><b>COURSE INTERESTED IN</b></h5></label>   
+        </div>
+    
+                        
+            <div class="d-grid gap-2">
+            <label class="form-label text-center bg-dark text-white pt-2 " for="HR NW"><h6><b>HARDWARE NETWORKING</b></h6></label>   
+            </div>
+            <div class="form-check form-check-inline">
+               <input class="form-check-input" type="checkbox" id="BASICS OF COMPUTER" name="STC" value="BASICS OF COMPUTER">
+               <label  class="form-check-label" for="BASICS OF COMPUTER">BASICS OF COMPUTER</label>
+               </div>
+
+               <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="ADVANCE EXCEL" name="STC" value="ADVANCE EXCEL">             
+                <label  class="form-check-label" for="ADVANCE EXCEL">ADVANCE EXCEL</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="(VBA)/ACCESS" name="STC" value="(VBA)/ACCESS">
+                <label  class="form-check-label" for="(VBA)/ACCESS">(VBA)/ACCESS</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="TALLY 9.0 ERP" name="STC" value="TALLY 9.0 ERP">
+                <label  class="form-check-label" for="TALLY 9.0 ERP">TALLY 9.0 ERP</label>      
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="C" name="STC" value="C">
+                <label  class="form-check-label" for="C">C</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="C++" name="STC" value="C++">
+                <label  class="form-check-label" for="C++">C++</label>        
+                </div>
+               
+
+
+                      
+    <div class="d-grid gap-2">
+        <label class="form-label text-center bg-dark text-white pt-2 " for="CFBE/BT/B,M(CA)"><h6><b>COURCES FOR  BE?B TECH,BCA/MCA</b></h6></label>   
+        </div>
+    
+              
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="CORE JAVA" name="CFBE/BT/B,M(CA)" value="CORE JAVA">        
+                <label  class="form-check-label" for="CORE JAVA">CORE JAVA</label>
+                </div>
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="J2EE(WEB SERVICES)" name="CFBE/BT/B,M(CA)" value="J2EE(WEB SERVICES)">
+                    <label  class="form-check-label" for="J2EE(WEB SERVICES)">J2EE(WEB SERVICES)</label>
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="*NET" name="CFBE/BT/B,M(CA)" value="*NET">
+                    <label  class="form-check-label" for="*NET">*NET</label>
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="PHP /MYSQL" name="CFBE/BT/B,M(CA)" value="PHP /MYSQL">
+                    <label  class="form-check-label" for="PHP /MYSQL">PHP /MYSQL</label>
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="SOFTWARE TESTING" name="CFBE/BT/B,M(CA)" value="SOFTWARE TESTING">
+                    <label  class="form-check-label" for="SOFTWARE TESTING">SOFTWARE TESTING</label>
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="QTP" name="CFBE/BT/B,M(CA)" value="QTP">    
+                   <label  class="form-check-label" for="QTP">QTP</label>
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="PL/SQL" name="CFBE/BT/B,M(CA)" value="PL/SQL">
+                    <label  class="form-check-label" for="PL/SQL">PL/SQL</label>
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="MS SQL" name="CFBE/BT/B,M(CA)" value="MS SQL">
+                    <label  class="form-check-label" for="MS SQL">MS SQL</label>
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="TECHNICAL WRITING" name="CFBE/BT/B,M(CA)" value="TECHNICAL WRITING">
+                    <label  class="form-check-label" for="TECHNICAL WRITING">TECHNICAL WRITING</label>
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="WEB DESIGNING" name="CFBE/BT/B,M(CA)" value="WEB DESIGNING">
+                    <label  class="form-check-label" for="WEB DESIGNING">WEB DESIGNING</label>
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="GRAPHICAL DESIGNING" name="CFBE/BT/B,M(CA)" value="GRAPHICAL DESIGNING">
+                    <label  class="form-check-label" for="GRAPHICAL DESIGNING">GRAPHICAL DESIGNING</label>
+                    </div>
+
+
+
+                       
+               <div class="d-grid gap-2">
+                <label class="form-label text-center bg-dark text-white pt-2 " for="CCF BE/BT/B,M(CA)"><h6><b>CERTIFICTION COURSES FOR BE/B TECH,BCA/MCA</b></h6></label>   
+                </div>
+             
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="RCCP" name="CCF BE/BT/B,M(CA)" value="RCCP">
+                <label  class="form-check-label"  for="RCCP">RCCP</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="RDSE" name="CCF BE/BT/B,M(CA)" value="RDSE">
+                <label  class="form-check-label"  for="RDSE">RDSE</label>
+                </div> 
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="RCP WD" name="CCF BE/BT/B,M(CA)" value="RCP WD">
+                <label   class="form-check-label" for="RCP WD">RCP WD</label>
+                </div> 
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="RIA" name="CCF BE/BT/B,M(CA)" value="RIA">
+                <label  class="form-check-label" for="RIA">RIA</label>
+                </div>             
+           
+
+              
+                        
+               <div class="d-grid gap-2">
+                <label class="form-label text-center bg-dark text-white pt-2 " for="DC"><h6><b>DIPLOMA CERTIFICATION</b></h6></label>   
+                </div>
+            
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="DIPLOMA IN JAVA" name="DC" value="DIPLOMA IN JAVA">    
+                <label  class="form-check-label" for="DIPLOMA IN JAVA">DIPLOMA IN JAVA</label>
+                 </div>            
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="DIPLOMA IN *NET" name="DC" value="DIPLOMA IN *NET">    
+                <label  class="form-check-label" for="DIPLOMA IN *NET">DIPLOMA IN *NET</label>
+                 </div>            
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="DIPLOMA IN S.TESTING" name="DC" value="DIPLOMA IN S.TESTING">    
+                <label  class="form-check-label" for="DIPLOMA IN S.TESTING">DIPLOMA IN S.TESTING</label>
+                </div>  
+
+
+        
+                <div class="d-grid gap-2">
+                <label class="form-label text-center bg-dark text-white pt-2 " for="SAP"><h6><b>SAP</b></h6></label>   
+                 </div>
+              
+
+                <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="FICO" name="SAP" value="FICO">
+                <label class="form-check-label" for="FICO">FICO</label>               
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="ABAP" name="SAP" value="ABAP">
+                <label class="form-check-label" for="ABAP">ABAP</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="CRM" name="SAP" value="CRM">
+                <label class="form-check-label" for="CRM">CRM</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="HCM" name="SAP" value="HCM">
+                <label class="form-check-label" for="HCM">HCM</label>
+                </div>
+
+                   <div class="form-check form-check-inline"> 
+                    <input class="form-check-input" type="checkbox" id="P.P" name="SAP" value="P.P"> 
+                <label class="form-check-label" for="P.P">P.P</label>
+                </div>
+                
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="MM" name="SAP" value="MM">
+                <label class="form-check-label" for="MM">MM</label>
+                </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="SD" name="SAP" value="SD">  
+                <label class="form-check-label" for="SD">SD</label>
+                </div>
+
+                   <div class="form-check form-check-inline"> 
+                    <input class="form-check-input" type="checkbox" id="BI" name="SAP" value="BI">
+                <label class="form-check-label" for="BI">BI</label>                
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="BO" name="SAP" value="BO">
+                <label class="form-check-label" for="BO">BO</label>              
+                </div>
+                    
+                <div class="d-grid gap-2">
+                    <label class="form-label text-center bg-dark text-white pt-2 " for="SPE"><h6><b>SPOKEN ENGLISH</b></h6></label>   
+                    </div>
+                
+                    
+                 <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="BASIC" name="SPE" value="BASIC">
+                <label class="form-check-label" for="BASIC">BASIC</label>
+                </div>    
+
+                 <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="INTERMEDIATE" name="SPE" value="INTERMEDIATE">
+                
+                <label class="form-check-label" for="INTERMEDIATE">INTERMEDIATE</label>
+                </div>     
+
+                 <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="ADVANCE" name="SPE" value="ADVANCE">
+                
+                <label class="form-check-label" for="ADVANCE">ADVANCE</label>
+                </div>    
+
+                 <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="DIPLOMA" name="SPE" value="DIPLOMA">
+                
+                <label class="form-check-label" for="DIPLOMA">DIPLOMA</label>
+                </div>
+
+            
+    <div class="d-grid gap-2">
+    <label class="form-label text-center bg-dark text-white pt-2 " for="HR NW"><h6><b>HARDWARE NETWORKING</b></h6></label>   
+    </div>
+
+             
+                     <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="A+">A+</label>
+                    <input class="form-check-input" type="checkbox" id="A+" name="HR NW" value="A+">
+                  </div>
+                    
+                 <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="N+">N+</label>
+                    <input class="form-check-input" type="checkbox" id="N+" name="HR NW" value="N+">
+              </div>
+                    
+               
+                 <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="MCITP">MCITP</label>
+                    <input class="form-check-input" type="checkbox" id="MCITP" name="HR NW" value="MCITP">
+              </div>
+                    
+                
+                     <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="CCNA">CCNA</label>
+                    <input class="form-check-input" type="checkbox" id="CCNA" name="HR NW" value="CCNA">
+                  </div>
+                    
+                
+                 <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="CCNP">CCNP</label>
+                    <input class="form-check-input" type="checkbox" id="CCNP" name="HR NW" value="CCNP">
+              </div>
+         
+            
+            <div class="d-grid gap-2">
+                <label class="form-label text-center bg-dark text-white pt-2" for="DE"><h6><b>DISTANCE EDUCATION</b></h6></label>   
+                </div>
+             
+                
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="BCOM-P" name="DE" value="BCOM-P">
+                <label class="form-check-label" for="BCOM-P">BCOM-P</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="BCA" name="DE" value="BCA">
+                <label class="form-check-label" for="BCA">BCA</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="MBA" name="DE" value="MBA">
+                <label class="form-check-label" for="MBA">MBA</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="MCA" name="DE" value="MCA">
+                <label class="form-check-label" for="MCA">MCA</label>
+                </div>         
+
+
+
+
+<div class="d-grid gap-2">
+    <label class="form-label text-center bg-dark text-white pt-2 " for="SC"><h6><b>SOURCE</b></h6></label>   
+    </div>
+
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="NWESPAPER" name="SC" value="NWESPAPER">
+                <label class="form-check-label" for="NWESPAPER">NWESPAPER</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="JUST DAIL" name="SC" value="JUST DAIL">
+                <label class="form-check-label" for="JUST DAIL">JUST DAIL</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="PAMPLET" name="SC" value="PAMPLET">
+                <label class="form-check-label" for="PAMPLET">PAMPLET</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="SMS" name="SC" value="SMS">
+                <label class="form-check-label" for="SMS">SMS</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="INTERNET" name="SC" value="INTERNET">
+                <label class="form-check-label" for="INTERNET">INTERNET</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="SULEKHA" name="SC" value="SULEKHA">
+                <label class="form-check-label" for="SULEKHA">SULEKHA</label>
+                </div>   
+
+                 <div class="form-check form-check-inline"> 
+               <input class="form-check-input" type="checkbox" id="SHIKSHA" name="SC" value="SHIKSHA">
+                <labelclass="form-check-label"  for="SHIKSHA">SHIKSHA</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="SILICON" name="SC" value="SILICON">
+                <label class="form-check-label" for="SILICON">SILICON</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="POSTER" name="SC" value="POSTER">
+                <label class="form-check-label" for="POSTER">POSTER</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="BANNER" name="SC" value="BANNER">
+                <label class="form-check-label" for="BANNER">BANNER</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="SEMINAR" name="SC" value="SEMINAR">
+                <label class="form-check-label" for="SEMINAR">SEMINAR</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="HOARDING" name="SC" value="HOARDING">
+                <label class="form-check-label" for="HOARDING">HOARDING</label>
+                </div>    
+                    
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="GOOGLE" name="SC" value="GOOGLE">
+                <label class="form-check-label" for="GOOGLE">GOOGLE</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="ASK LAILA" name="SC" value="ASK LAILA">
+                <label class="form-check-label" for="ASK LAILA">ASK LAILA</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="E-MAIL" name="SC" value="E-MAIL">
+                <label class="form-check-label" for="E-MAIL">E-MAIL</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="YET5.COM" name="SC" value="YET5.COM">
+                <label class="form-check-label" for="YET5.COM">YET5.COM</label>
+                </div>
+                
+                 <div class="form-check form-check-inline"> 
+                <input class="form-check-input" type="checkbox" id="ITS SKSHAN.COM" name="SC" value="ITS SKSHAN.COM">
+                <label class="form-check-label" for="ITS SKSHAN.COM">ITS SKSHAN.COM</label>
+                </div>
+          
+         
+                <div class="d-grid gap-2">
+              <label class="form-label text-center bg-dark text-white pt-2" for="ITJ"><h6><b>INTRESTED TO JOIN</b></h6></label>   
+              </div>
+
+        
+
+            <input type="radio" id="TODAY" name="IJT" value="TODAY">
+            <lable for="TODAY">TODAY</lable>
+
+            <input type="radio" id="TOMARROW" name="IJT" value="TOMARROW">
+            <lable for="TOMARROW">TOMARROW</lable>
+
+            <input type="radio" id="WITHIN A WEEK" name="IJT" value="WITHIN A WEEK">
+            <lable for="WITHIN A WEEK">WITHIN A WEEK</lable>
+
+            <input type="radio" id="WITHIN A MONTH" name="IJT" value="WITHIN A MONTH">
+            <lable for="WITHIN A MONTH">WITHIN A MONTH</lable>
+            </div>
+
+
+           <br>
+            <div class="row g-3 align-items-center">
+
+                 <div class="form-group col-auto">
+                <label class="form-group-label" for="date"><b>DATE </b></label>
+                <input class="form-group-input" type="date" name="date" id="date" required>
+                </div> 
+    
+                 <div class="form-group col-auto">
+                <label class="form-label" for="tm"><b>TIME </b></label>
+                <input class="form-input" type="time" name="tm" id="tm" required>
+                </div> 
+    
+                 <div class="form-group col-auto">
+                <label class="form-label" for="sn"><b>SIGNATURE </b></label>
+                <input class="form-input" type="text" name="sn" id="sn" required>
+                </div> 
+
+            </div>
+
+          
+
+            <label class="form-label text-center bg-dark text-white pt-2" for="SC"><h5><b>FOR OFFICE USE ONLY</b></h5></label>
+
+             <div class="form-group">
+            <label class="form-label mt-2 " for="CRS"><b>COURSE</b></label>
+            <input class="form-input  form-control" type="text" name="CRS" id="CRS" required>
+            </div> 
+
+             <div class="form-group">
+            <label class="form-label mt-2  " for="CUNSL"><b>COUNSELLOR </b></label>
+            <input class="form-input  form-control" type="text" name="CUNSL" id="CUNSL" required>
+            </div>
+
+             <div class="form-group">
+            <label class="form-label mt-2 " for="fees"><b>FEES</b></label>
+            <input class="form-input  form-control" type="number" name="fees" id="fees" required>
+            </div>
+
+             <div class="form-group">
+            <label class="form-label mt-2 " for="coment"><b>COMENTS</b></label>
+            <input class="form-input  form-control" type="text" name="coment" id="coment" required>
+            </div>
+              -->
+            <br>
+            
+
+            <div class="d-grid gap-2"><button type="submit" class="btn btn-dark get-started-btn ">Submit form</button></div>
+                
+        
+</form>
+</div>
+
+<div class="col-md-2"></div>
+{% endblock fristSection %}
+
+
+
+{% block body %}
+{% endblock body %}
+
+
+{% block script %}
+
+<script src="https//cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+{% endblock script %}

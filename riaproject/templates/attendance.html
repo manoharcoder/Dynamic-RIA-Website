@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+ Attendance
+{% endblock title %}
+
+
+{% block cdnlinks %}
+
+<link href="https//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+ 
+{% endblock cdnlinks %}
+
+{% block fristSection %}
+<br>
+<br>
+<div class="row">
+    <h1 class="text-center">Apply Attendance</h1>
+
+<div class="col-md-3"> </div>
+<div class="col-md-6">
+
+    {% include 'messages.html' %}
+
+    <div class="card p-3 bg-light">
+
+    <div class="card-title text-center" ><h3> </h3></div>
+        <div class="card-body">
+        <form action="/attendance" method="post">{% csrf_token %}  
+               
+               
+                <div class="form-group">
+                <label for="name"><b>Name</b></label>
+                <input type="text" class="form-control" name="name" id="name"   value="{{user.first_name}}" required>
+                </div> 
+
+                <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email"   hidden='hidden' value="{{request.user.email}}" required>
+                </div> 
+                
+                
+                <div class="form-group">
+                    <label for="date"><b>Date</b></label>
+                    <input type="date" class="form-control" date="date" id="date" name='date' required>
+                </div> 
+    
+                
+                <div class="form-group">
+                    <label for="logintime"><b>Login Time</b></label>
+                    <input type="time" class="form-control" name="logintime" id="logintime"   required>
+                </div> 
+    
+                
+                <div class="form-group">
+                    <label for="Logouttime"><b>Logout Time</b></label>
+                    <input type="time" class="form-control" name="logouttime" id="logouttime"   required>
+                </div> 
+    
+                <hr>
+
+                <div class="d-grid gap-2 mb-3">
+                    <button type="submit" class="btn btn-success get-started-btn">Apply</button>
+                </div>
+
+ 
+       </form>
+
+
+
+</div>
+
+<div class="col-md-3"></div>
+</div>
+
+{% endblock fristSection %}
+
+
+
+{% block body %}
+{% endblock body %}
+
+
+{% block script %}
+
+<script src="https//cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+{% endblock script %}

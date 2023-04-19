@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+details page
+{% endblock title %}
+
+
+
+{% block courousal %}
+
+{% endblock courousal %}
+
+{% block fristSection %}
+<br>
+<br>
+<div class="row">
+    <div class="card-title text-center">
+        <h3>Course Details</h3>
+    </div>
+
+   {% for c in cources %}
+    
+   <div><a href="/course" class="btn btn-dark get-started-btn  text-center">Go Back</a></div>   
+
+   <div class="col-md-4">
+        <div class="card">
+            <img src="{{c.image.url}}" class="card-img-top" alt="...">
+            <br>
+            <div class="card-title m-2"><h5><b>     Course Name   </b>    : {{c.courseName}}</h5></div>
+            <hr>
+            <div class="card-body  m-2 p-0"><p><b>     Fee Structure</b>      :{{c.courseFee}} Rs./-</p></div>
+            <hr>
+            <div class="card-body m-2 p-2"><p><b>    Duration      </b>: {{c.courseDuration}} Months</p></div>
+
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="card">
+
+            <div class="card-title m-2 "><h2><b>aboutCourse : {{c.courseName}}</b></h2></div>
+            <div class="card-body">{{c.aboutCourse | safe}}</div>
+
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="card">
+
+            <div class="card-title m-2"><h2><b>syllabus : {{c.courseName}}</b></h2></div>
+            <div class="card-body">{{c.syllabus | safe}} </div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+
+
+{% endblock fristSection %}
+
+
+
+{% block body %}
+
+{% endblock body %}

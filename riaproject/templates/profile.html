@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block title %}
+Candidate Profile
+{% endblock title %}
+
+{% block cdnlinks %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock cdnlinks %}
+
+{% block body %}
+
+
+<div class="container mt-2" data-aos="fade-up">
+<h1 class="text-center">Welcome</h1>
+
+
+<div class="row">
+
+ 
+
+
+    
+<div class="col-md-3">   
+    <div><a href="/" class="btn btn-dark"> Go Back</a></div>
+</div>
+
+
+<div class="col-md-7 ">
+    {% include 'messages.html' %}
+
+  <div class="card p-3 bg-light ">
+    <div class="card-title">
+        <h3>Candidate Details</h3>
+    <div class="card-body">
+        <hr/>
+        {% for d in query %}   
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+       
+       <div class="d-grid gap-2 ">
+       <a href="/candidateupdate/{{d.candidateId}}" class="btn btn-success ">Update Detail</a>
+       </div>
+
+   
+        <div class="d-grid gap-2 ">
+        <a href="/deletecandidate/{{d.candidateId}}" class="btn btn-success ">Delete Detail</a>
+        </div>
+
+         </div>
+    <hr/>
+   <h5>Candidate Id : <b> {{d.candidateId}} </b></h5> <hr/>
+   <h5>Name : <b> {{d.firstName}} </b> <b> {{d.lastName}} </b></h5> <hr/>
+   <h5>Father Name : <b> {{d.fatherName}} </b></h5> <hr/>
+   <h5>Phone Number : <b> {{d.phoneNumber}} </b> </h5> <hr/>
+   <h5>Alternate Number : <b> {{d.alternateNumber}} </b> </h5> <hr/>
+   <h5>Email: <b> {{d.email}} </b> </h5> <hr/>
+   <h5>College Name : <b> {{d.collegeName}} </b> </h5> <hr/>
+   <h5>Address : <b> {{d.address}} </b> </h5> <hr/>
+   <h5>Landmark : <b> {{d.landMark}} </b> </h5> <hr/>
+   <h5>Street : <b> {{d.street}} </b> </h5> <hr/>
+   <h5> City: <b> {{d.city}} </b> </h5> <hr/>
+   <h5>Pincode : <b> {{d.pincode}} </b> </h5> <hr/>
+   <h5>Company Name : <b> {{d.companyName}} </b> </h5> <hr/>
+   <h5>Designation : <b> {{d.designation}} </b> </h5> <hr/>
+   <h5>Qualification : <b> {{d.qualification}} </b> </h5> <hr/>
+   <h5>Computer Knowledge : <b> {{d.computerKnowledge}} </b> </h5> <hr/>
+   <h5>Course : <b> {{d.course}} </b> </h5> <hr/>
+   <h5>Enrollment Date : <b> {{d.timeStamp}} </b> </h5> <hr/>
+   <h5>Trainer: <b> {{d.trainer}} </b> </h5> <hr/>
+   
+ 
+   <h3 class="bg-dark text-center text-white"><b>Payment Status</b></h3><hr/>
+   <h4>Amout Paid :{{paymentstats.amount}}</h4>
+   <h4>Amout Balance:{{paymentstats.balance}}</h4>
+   <h4>Payement Status :{{paymentstats.paymentstatus}}</h4>
+<hr>
+
+   {% endfor %}
+
+
+</div>
+
+</div>
+
+
+
+</div>
+ 
+   
+<table class="table p-2">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">S.No      </th>
+        <th scope="col">Date      </th>
+        <th scope="col">Login Time </th>
+        <th scope="col">Logout Time</th>
+        <th scope="col">Attendance Status</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for a in attendanceStats %}
+      <tr>
+        <th scope="row"class="table-success">{{forloop.counter }}</th>
+        <td class="table-warning">{{a.date}}</td>
+        <td class="table-info">{{a.logintime}}</td>
+        <td class="table-light">{{a.logouttime}}</td>
+
+        {% if a.approvalstatus %}
+        <td class="table-danger"> Approved  ( <span><i class="fa-solid fa-check"></i></span>)</td>
+        {% else %}
+        <td class="table-danger"> Not Approved  (<span><i class="fa-solid fa-xmark"></i></span></i>)</td>
+        {% endif %}   
+    
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+{% endblock body %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+Courses
+{% endblock title %}
+{% block body %}
+{% load static %}
+<h1 class="text-center">Avaible Courses</h1>
+<hr>
+<div class="container mt-3">
+    <div class="row">
+
+
+        {% for c in cources %}
+
+
+
+        <div class="col-md-3">
+
+            <div class="card">
+                <img src="{{c.image.url}}" id="card-img" class="card-img-top p-3"  alt="image not found">
+                <div class="card-body">
+                    <h6 class="card-title"><b><u>Course Name : {{c.courseName}}</u> </b></h6>
+                   
+                    <hr>
+                    <p class="card-text"><b>Fee : {{c.courseFee}} Rs/-</b></p>
+                    <hr>
+                    <p class="card-text"><b>Rating : {{c.rating}} STARS</b></p>
+                    <hr>
+                    <a href="/detailsofcourse/{{c.id}}" class="btn  btn-outline-dark get-started-btn m-2 p-2" ><b>Know More</b></a>
+                    <a href="/enroll" class="btn btn-outline-dark m-2 p-2"><b>To Enroll</b></a>
+                </div>
+            </div>
+            <br>
+        </div>
+            {% endfor %}
+
+       
+    </div>
+</div>
+{% endblock body %}
